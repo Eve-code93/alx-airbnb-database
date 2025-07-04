@@ -1,4 +1,4 @@
--- Initial unoptimized query
+-- 1. Initial unoptimized query with AND in WHERE clause
 SELECT 
     b.id AS booking_id,
     u.name AS user_name,
@@ -8,9 +8,12 @@ SELECT
 FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
-JOIN payments pay ON pay.booking_id = b.id;
+JOIN payments pay ON pay.booking_id = b.id
+WHERE b.start_date >= '2025-01-01'
+AND pay.status = 'completed';
 
--- Refactored optimized query
+
+-- 2. Refactored optimized query
 SELECT 
     b.id AS booking_id,
     u.name AS user_name,
@@ -20,4 +23,5 @@ FROM bookings b
 JOIN users u ON b.user_id = u.id
 JOIN properties p ON b.property_id = p.id
 JOIN payments pay ON pay.booking_id = b.id
-WHERE b.start_date >= '2025-01-01';
+WHERE b.start_date >= '2025-01-01'
+AND pay.status = 'completed';
