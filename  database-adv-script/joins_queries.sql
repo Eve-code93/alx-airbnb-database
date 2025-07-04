@@ -8,6 +8,17 @@ SELECT
     b.end_date
 FROM bookings b
 INNER JOIN users u ON b.user_id = u.id;
+-- Task: INNER JOIN to retrieve all bookings and the respective users
+
+SELECT 
+    b.id AS booking_id,
+    u.id AS user_id,
+    u.name AS user_name,
+    b.property_id,
+    b.start_date,
+    b.end_date
+FROM bookings b
+INNER JOIN users u ON b.user_id = u.id;
 
 -- 2. LEFT JOIN: Retrieve all properties and their reviews, including properties that have no reviews
 SELECT 
