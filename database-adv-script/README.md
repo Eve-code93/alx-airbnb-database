@@ -71,3 +71,30 @@ SELECT
     b.start_date
 FROM users u
 RIGHT JOIN bookings b ON u.id = b.user_id;
+
+# 🔍 Subqueries – ALX Airbnb Database Project
+
+This task focuses on practicing **non-correlated** and **correlated** subqueries using a simulated Airbnb database.
+
+---
+
+## 🧠 Objective
+
+- Use a **non-correlated subquery** to filter properties based on average review ratings.
+- Use a **correlated subquery** to filter users based on the number of bookings they've made.
+
+---
+
+## 📄 Queries Implemented
+
+### 1. ⭐ Properties with Avg Rating > 4.0
+
+```sql
+SELECT * 
+FROM properties
+WHERE id IN (
+    SELECT property_id
+    FROM reviews
+    GROUP BY property_id
+    HAVING AVG(rating) > 4.0
+);
