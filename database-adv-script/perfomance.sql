@@ -1,4 +1,5 @@
--- 1. Initial unoptimized query with AND in WHERE clause
+-- 1. EXPLAIN initial unoptimized query
+EXPLAIN
 SELECT 
     b.id AS booking_id,
     u.name AS user_name,
