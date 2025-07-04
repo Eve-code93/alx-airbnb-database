@@ -98,3 +98,22 @@ WHERE id IN (
     GROUP BY property_id
     HAVING AVG(rating) > 4.0
 );
+---
+
+## 📊 Aggregations and Window Functions
+
+This task uses SQL aggregation functions and analytical window functions to derive insights from booking data.
+
+---
+
+### 1. 🧮 Total Bookings Per User
+
+```sql
+SELECT 
+    u.id AS user_id,
+    u.name AS user_name,
+    COUNT(b.id) AS total_bookings
+FROM users u
+LEFT JOIN bookings b ON u.id = b.user_id
+GROUP BY u.id, u.name
+ORDER BY total_bookings DESC;
